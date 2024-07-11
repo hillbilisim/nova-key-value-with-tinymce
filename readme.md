@@ -13,11 +13,11 @@ This Nova package allow you to use [TinyMCE editor](https://tiny.cloud) for text
 | V 4  | V 2 |
 
 ```shell
-composer require emilianotisato/nova-tinymce
+composer require hillbilisim/nova-key-value-with-tinymce
 ```
 Run the command bellow, to publish TinyMCE JavaScript and CSS assets.
 ```shell
-php artisan vendor:publish --provider="Emilianotisato\NovaTinyMCE\FieldServiceProvider"
+php artisan vendor:publish --provider="HillTech\NovaKeyValueTinyMCE\FieldServiceProvider"
 ```
 
 ## Usage
@@ -25,7 +25,7 @@ php artisan vendor:publish --provider="Emilianotisato\NovaTinyMCE\FieldServicePr
 In your Nova resource add the use declaration and use the NovaTinyMCE field:
 
 ```php
-use Emilianotisato\NovaTinyMCE\NovaKeyValueTinyMCE;
+use HillTech\NovaKeyValueTinyMCE\NovaKeyValueTinyMCE;
 
 // ...
 
@@ -100,7 +100,7 @@ Optional, in case you [change the laravel-filemanager URL](https://unisharp.gith
 In case you have in mind a default `options` array to load any time you instantiate the `NovaTinyMCE` field, you can optionally publish the config file and override the `default_options` array:
 
 ```bash
-php artisan vendor:publish --provider="Emilianotisato\NovaTinyMCE\FieldServiceProvider" --tag="config"
+php artisan vendor:publish --provider="HillTech\NovaKeyValueTinyMCE\FieldServiceProvider" --tag="config"
 ```
 
 This is the contents of the published config file:
@@ -156,6 +156,6 @@ If you use JSON syntax on attribute name, TinyMCE won't initialize because the d
 To solve this you can define a custom id. For example:
 
 ```php
-    NovaTinyMCE::make('Value', 'text->en')->id('custom-id');
+    NovaKeyValueTinyMCE::make('Value', 'text->en')->id('custom-id');
 ```
  
