@@ -62,7 +62,7 @@ class NovaKeyValueTinyMCE extends Field
         parent::__construct($name, $attribute, $resolveCallback);
 
         $this->withMeta([
-            'options' => config('nova-kvw-tinymce.default_options'),
+            'options' => config('nova-keyvaluetinymce.default_options'),
         ]);
     }
 
