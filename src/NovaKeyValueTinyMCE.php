@@ -19,7 +19,7 @@ class NovaKeyValueTinyMCE extends Field
      *
      * @var string
      */
-    public $component = 'Nova-TinyMCE';
+    public $component = 'Nova-KeyValueTinyMCE';
     /**
      * The label that should be used for the key heading.
      *

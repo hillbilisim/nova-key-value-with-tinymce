@@ -15759,9 +15759,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 Nova.booting(function (app, store) {
-  app.component('index-Nova-TinyMCE', _components_IndexField__WEBPACK_IMPORTED_MODULE_0__["default"]);
-  app.component('detail-Nova-TinyMCE', _components_DetailField__WEBPACK_IMPORTED_MODULE_1__["default"]);
-  app.component('form-Nova-TinyMCE', _components_FormField__WEBPACK_IMPORTED_MODULE_2__["default"]);
+  app.component('index-Nova-KeyValueTinyMCE', _components_IndexField__WEBPACK_IMPORTED_MODULE_0__["default"]);
+  app.component('detail-Nova-KeyValueTinyMCE', _components_DetailField__WEBPACK_IMPORTED_MODULE_1__["default"]);
+  app.component('form-Nova-KeyValueTinyMCE', _components_FormField__WEBPACK_IMPORTED_MODULE_2__["default"]);
 });
 })();
 

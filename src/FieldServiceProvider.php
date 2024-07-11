@@ -21,15 +21,15 @@ class FieldServiceProvider extends ServiceProvider
         ], 'public');
 
         $this->publishes([
-            __DIR__.'/../config/nova-tinymce.php' => config_path('nova-tinymce.php'),
+            __DIR__.'/../config/nova-keyvaluetinymce.php' => config_path('nova-keyvaluetinymce.php'),
         ], 'config');
 
         $this->publishes([__DIR__.'/../dist/tinymce' => public_path('vendor/tinymce')], ['nova-assets', 'laravel-assets']);
 
         Nova::serving(function (ServingNova $event) {
-            Nova::script('Nova-TinyMCE-tinymce', __DIR__.'/../dist/js/tinymce.js');
-            Nova::script('Nova-TinyMCE', __DIR__.'/../dist/js/field.js');
-            Nova::style('Nova-TinyMCE', __DIR__.'/../dist/css/field.css');
+            Nova::script('Nova-KeyValueTinyMCE-tinymce', __DIR__.'/../dist/js/tinymce.js');
+            Nova::script('Nova-KeyValueTinyMCE', __DIR__.'/../dist/js/field.js');
+            Nova::style('Nova-KeyValueTinyMCE', __DIR__.'/../dist/css/field.css');
         });
 
         if ($this->app->runningInConsole()) {
@@ -46,6 +46,6 @@ class FieldServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__.'/../config/nova-tinymce.php', 'nova-tinymce');
+        $this->mergeConfigFrom(__DIR__.'/../config/nova-keyvaluetinymce.php', 'nova-keyvaluetinymce');
     }
 }
