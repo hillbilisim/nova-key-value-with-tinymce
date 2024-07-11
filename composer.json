@@ -1,0 +1,38 @@
+{
+    "name": "hillbilisim/nova-key-value-with-tinymce",
+    "description": "This Nova package allow you to use TinyMCE editor for text areas.You can customize the editor options and... you can upload images to your server and put them rigth there on the text without leaving the text editor!",
+    "keywords": [
+        "laravel",
+        "nova",
+        "editor",
+        "tiny"
+    ],
+    "license": "MIT",
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://nova.laravel.com"
+        }
+    ],
+    "require": {
+        "php": "^7.3|^8.0|^8.1",
+        "laravel/nova": "~4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "HillTech\\NovaKeyValueTinyMCE\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "HillTech\\NovaKeyValueTinyMCE\\FieldServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
