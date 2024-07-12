@@ -1,11 +1,11 @@
 <template>
   <PanelItem :index="index" :field="field">
-    <template #value>test
-      <FormTinyKeyValueTable v-if="theData.length > 0" :edit-mode="false" class="overflow-hidden">
-        <FormTinyKeyValueHeader :key-label="field.keyLabel" :value-label="field.valueLabel"/>
+    <template #value>testr
+      <TinyKeyValueTable v-if="theData.length > 0" :edit-mode="false" class="overflow-hidden">
+        <TinyKeyValueHeader :key-label="field.keyLabel" :value-label="field.valueLabel"/>
 
         <div class="bg-gray-50 dark:bg-gray-700 overflow-hidden key-value-items">
-          <FormTinyKeyValueItem
+          <TinyKeyValueItem
               v-for="(item, index) in theData"
               :index="index"
               :item="item"
@@ -16,7 +16,7 @@
               :init="options"
           />
         </div>
-      </FormTinyKeyValueTable>
+      </TinyKeyValueTable>
     </template>
   </PanelItem>
 </template>
