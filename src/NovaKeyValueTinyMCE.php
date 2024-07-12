@@ -4,11 +4,13 @@ namespace HillTech\NovaKeyValueTinyMCE;
 
 use Laravel\Nova\Fields\Expandable;
 use Laravel\Nova\Fields\Field;
+use Laravel\Nova\Fields\SupportsDependentFields;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class NovaKeyValueTinyMCE extends Field
 {
     use Expandable;
+    use SupportsDependentFields;
 
     public $showOnIndex = false;
 

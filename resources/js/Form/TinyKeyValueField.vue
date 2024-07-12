@@ -6,17 +6,17 @@
     :show-help-text="showHelpText"
   >
     <template #field>
-      <FormKeyValueTable
+      <FormTinyKeyValueTable
         :edit-mode="!currentlyIsReadonly"
         :can-delete-row="currentField.canDeleteRow"
       >
-        <FormKeyValueHeader
+        <FormTinyKeyValueHeader
           :key-label="currentField.keyLabel"
           :value-label="currentField.valueLabel"
         />
 
         <div class="bg-white dark:bg-gray-800 overflow-hidden key-value-items">
-          <FormKeyValueItem
+          <FormTinyKeyValueItem
             v-for="(item, index) in theData"
             :index="index"
             @remove-row="removeRow"
@@ -28,7 +28,7 @@
             :can-delete-row="currentField.canDeleteRow"
           />
         </div>
-      </FormKeyValueTable>
+      </FormTinyKeyValueTable>
 
       <div
         class="mr-11"
@@ -59,6 +59,7 @@ import map from 'lodash/map'
 import reject from 'lodash/reject'
 import tap from 'lodash/tap'
 import { DependentFormField, HandlesValidationErrors } from '@/mixins'
+import TinyKeyValueTable from "./TinyKeyValueTable.vue";
 
 function guid() {
   var S4 = function () {
@@ -81,6 +82,7 @@ function guid() {
 }
 
 export default {
+  components: {TinyKeyValueTable},
   mixins: [HandlesValidationErrors, DependentFormField],
 
   data: () => ({ theData: [] }),
