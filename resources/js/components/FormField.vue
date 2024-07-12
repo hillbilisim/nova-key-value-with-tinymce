@@ -1,6 +1,6 @@
 <template>
   <PanelItem :index="index" :field="field">
-    <template #value>
+    <template #value>test
       <FormTinyKeyValueTable v-if="theData.length > 0" :edit-mode="false" class="overflow-hidden">
         <FormTinyKeyValueHeader :key-label="field.keyLabel" :value-label="field.valueLabel"/>
 

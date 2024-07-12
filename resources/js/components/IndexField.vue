@@ -1,5 +1,5 @@
 <template>
-    <span>{{ cleanValue }}</span>
+    asd<span>{{ cleanValue }}</span>
 </template>
 
 <script>
