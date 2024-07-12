@@ -6,17 +6,17 @@
     :show-help-text="showHelpText"
   >
     <template #field>
-      <FormTinyKeyValueTable
+      <TinyKeyValueTable
         :edit-mode="!currentlyIsReadonly"
         :can-delete-row="currentField.canDeleteRow"
       >
-        <FormTinyKeyValueHeader
+        <TinyKeyValueHeader
           :key-label="currentField.keyLabel"
           :value-label="currentField.valueLabel"
         />
 
         <div class="bg-white dark:bg-gray-800 overflow-hidden key-value-items">
-          <FormTinyKeyValueItem
+          <TinyKeyValueItem
             v-for="(item, index) in theData"
             :index="index"
             @remove-row="removeRow"
@@ -28,7 +28,7 @@
             :can-delete-row="currentField.canDeleteRow"
           />
         </div>
-      </FormTinyKeyValueTable>
+      </TinyKeyValueTable>
 
       <div
         class="mr-11"
