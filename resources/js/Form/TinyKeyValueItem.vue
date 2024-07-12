@@ -39,13 +39,12 @@
             ? 'bg-gray-50 dark:bg-gray-700'
             : 'bg-white dark:bg-gray-900',
         ]"
-      >
+      >test3
         <editor :id="field.id"
                 v-model="item.value"
                 @focus="handleValueFieldFocus"
                 ref="valueField"
                 class="font-mono text-xs block w-full px-3 py-3 dark:text-gray-400"
-
                 :class="{
             'bg-white dark:bg-gray-800 focus:outline-none': !isEditable,
             'hover:bg-20 focus:bg-white dark:bg-gray-900 dark:focus:bg-gray-900 focus:outline-none focus:ring focus:ring-inset':

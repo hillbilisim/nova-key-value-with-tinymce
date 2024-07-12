@@ -1,7 +1,7 @@
 <template>
     <PanelItem :index="index" :field="field">
         <template #value>
-            <Excerpt :content="field.value" :should-show="field.shouldShow" />
+          test2  <Excerpt :content="field.value" :should-show="field.shouldShow" />
         </template>
     </PanelItem>
 </template>
