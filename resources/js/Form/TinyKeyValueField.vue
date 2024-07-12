@@ -58,8 +58,7 @@ import fromPairs from 'lodash/fromPairs'
 import map from 'lodash/map'
 import reject from 'lodash/reject'
 import tap from 'lodash/tap'
-import { DependentFormField, HandlesValidationErrors } from '@/mixins'
-import TinyKeyValueTable from "./TinyKeyValueTable.vue";
+ import TinyKeyValueTable from "./TinyKeyValueTable.vue";
 
 function guid() {
   var S4 = function () {
@@ -83,7 +82,6 @@ function guid() {
 
 export default {
   components: {TinyKeyValueTable},
-  mixins: [HandlesValidationErrors, DependentFormField],
 
   data: () => ({ theData: [] }),
 

@@ -23,13 +23,11 @@
 
 <script>
 import map from 'lodash/map'
-import {DependentFormField, HandlesValidationErrors} from 'laravel-nova'
-import Editor from '@tinymce/tinymce-vue'
+ import Editor from '@tinymce/tinymce-vue'
 
 export default {
   components: {Editor},
 
-  mixins: [DependentFormField, HandlesValidationErrors],
 
   props: ['index', 'resource', 'resourceName', 'resourceId', 'field'],
   computed: {
