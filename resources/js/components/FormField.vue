@@ -1,8 +1,8 @@
 <template>
   <PanelItem :index="index" :field="field">
     <template #value>testr
-      <TinyKeyValueTable v-if="theData.length > 0" :edit-mode="false" class="overflow-hidden">
-        <TinyKeyValueHeader :key-label="field.keyLabel" :value-label="field.valueLabel"/>
+      <FormTinyKeyValueTable v-if="theData.length > 0" :edit-mode="false" class="overflow-hidden">
+        asds<TinyKeyValueHeader :key-label="field.keyLabel" :value-label="field.valueLabel"/>
 
         <div class="bg-gray-50 dark:bg-gray-700 overflow-hidden key-value-items">
           <TinyKeyValueItem
@@ -16,7 +16,7 @@
               :init="options"
           />
         </div>
-      </TinyKeyValueTable>
+      </FormTinyKeyValueTable>
     </template>
   </PanelItem>
 </template>
