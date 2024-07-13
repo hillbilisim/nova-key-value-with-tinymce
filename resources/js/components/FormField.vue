@@ -145,13 +145,7 @@ export default {
         this.addRow()
       }
     },
-    fill(formData) {
-      this.fillIfVisible(
-          formData,
-          this.field.attribute,
-          JSON.stringify(this.finalPayload)
-      )
-    },
+
     addRow() {
       return tap(guid(), id => {
         this.theData = [...this.theData, {id, key: '', value: ''}]
