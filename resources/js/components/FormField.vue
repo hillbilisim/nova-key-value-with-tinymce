@@ -1,6 +1,7 @@
 <template>
   <PanelItem :index="index" :field="field">
     <template #value>
+      kv
       <FormTinyKeyValueTable
           v-if="theData.length > 0"
           :edit-mode="false"
@@ -46,6 +47,7 @@ export default {
           value,
         })
     )
+    console.log(this.theData)
   },
   props: ['index', 'resource', 'resourceName', 'resourceId', 'field'],
 
