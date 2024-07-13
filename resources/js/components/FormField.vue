@@ -28,7 +28,7 @@
       class="mr-11"
       v-if="
           !currentlyIsReadonly &&
-          !currentField.readonlyKeys &&
+          !theData.readonlyKeys &&
           theData.canAddRow
         "
   >
