@@ -4,13 +4,13 @@
       :edit-mode="!currentlyIsReadonly"
       :can-delete-row="theData.canDeleteRow"
   >
-    <KeyValueHeader
+    <TinyKeyValueHeader
         :key-label="theData.keyLabel"
         :value-label="theData.valueLabel"
     />
 
     <div class="bg-white dark:bg-gray-800 overflow-hidden key-value-items">
-      <KeyValueItem
+      <TinyKeyValueItem
           v-for="(item, index) in theData"
           :index="index"
           @remove-row="removeRow"
