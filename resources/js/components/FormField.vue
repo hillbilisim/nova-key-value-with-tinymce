@@ -1,7 +1,7 @@
 <template>
   <PanelItem :index="index" :field="field">
     <template #value>testr
-      <FormTinyKeyValueTable v-if="theData.length > 0" :edit-mode="false" class="overflow-hidden">
+      <FormTinyKeyValueTable  :edit-mode="false" class="overflow-hidden">
         asds<TinyKeyValueHeader :key-label="field.keyLabel" :value-label="field.valueLabel"/>
 
         <div class="bg-gray-50 dark:bg-gray-700 overflow-hidden key-value-items">
@@ -89,7 +89,7 @@ export default {
       });
     }
   },
-  data: () => ({theData: [a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z]}),
+  data: () => ({theData: []}),
 
   created() {
     this.theData = map(
