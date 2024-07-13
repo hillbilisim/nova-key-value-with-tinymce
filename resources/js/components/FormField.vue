@@ -1,47 +1,55 @@
 <template>
-
-  <TinyKeyValueTable
-      :edit-mode="!currentlyIsReadonly"
-      :can-delete-row="theData.canDeleteRow"
+  <DefaultField
+      :field="field"
+      :errors="errors"
+      :show-help-text="showHelpText"
+      :full-width-content="fullWidthContent"
   >
-    <TinyKeyValueHeader
-        :key-label="theData.keyLabel"
-        :value-label="theData.valueLabel"
-    />
-
-    <div class="bg-white dark:bg-gray-800 overflow-hidden key-value-items">
-      <TinyKeyValueItem
-          v-for="(item, index) in theData"
-          :index="index"
-          @remove-row="removeRow"
-          :item.sync="item"
-          :key="item.id"
-          :ref="item.id"
-          :read-only="currentlyIsReadonly"
-          :read-only-keys="theData.readonlyKeys"
-          :can-delete-row="theData.canDeleteRow"
+    a
+    <TinyKeyValueTable
+        :edit-mode="!currentlyIsReadonly"
+        :can-delete-row="theData.canDeleteRow"
+    >b
+      <TinyKeyValueHeader
+          :key-label="theData.keyLabel"
+          :value-label="theData.valueLabel"
       />
-    </div>
-  </TinyKeyValueTable>
+      c
+      <div class="bg-white dark:bg-gray-800 overflow-hidden key-value-items">
+        <TinyKeyValueItem
+            v-for="(item, index) in theData"
+            :index="index"
+            @remove-row="removeRow"
+            :item.sync="item"
+            :key="item.id"
+            :ref="item.id"
+            :read-only="currentlyIsReadonly"
+            :read-only-keys="theData.readonlyKeys"
+            :can-delete-row="theData.canDeleteRow"
+        />
+        d
+      </div>
+    </TinyKeyValueTable>
 
-  <div
-      class="mr-11"
-      v-if="
+    <div
+        class="mr-11"
+        v-if="
           !currentlyIsReadonly &&
           !theData.readonlyKeys &&
           theData.canAddRow
         "
-  >
-    <button
-        @click="addRowAndSelect"
-        :dusk="`${field.attribute}-add-key-value`"
-        type="button"
-        class="cursor-pointer focus:outline-none focus:ring ring-primary-200 dark:ring-gray-600 focus:ring-offset-4 dark:focus:ring-offset-gray-800 rounded-lg mx-auto text-primary-500 font-bold link-default mt-3 px-3 rounded-b-lg flex items-center"
     >
-      <Icon type="plus-circle"/>
-      <span class="ml-1">{{ theData.actionText }}</span>
-    </button>
-  </div>
+      <button
+          @click="addRowAndSelect"
+          :dusk="`${field.attribute}-add-key-value`"
+          type="button"
+          class="cursor-pointer focus:outline-none focus:ring ring-primary-200 dark:ring-gray-600 focus:ring-offset-4 dark:focus:ring-offset-gray-800 rounded-lg mx-auto text-primary-500 font-bold link-default mt-3 px-3 rounded-b-lg flex items-center"
+      >
+        <Icon type="plus-circle"/>
+        <span class="ml-1">{{ theData.actionText }}</span>
+      </button>
+    </div>
+  </DefaultField>
 </template>
 
 <script>
@@ -116,7 +124,6 @@ export default {
         if (this.theData.length == 0) {
           this.addRow()
         }
-        console.log(this.theData);
       },
 
       /**
