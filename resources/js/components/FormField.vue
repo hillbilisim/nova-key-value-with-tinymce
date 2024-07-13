@@ -59,7 +59,7 @@ import findIndex from 'lodash/findIndex'
 import fromPairs from 'lodash/fromPairs'
 import reject from 'lodash/reject'
 import tap from 'lodash/tap'
-import TinyKeyValueTable from "./TinyKeyValueTable.vue";
+import TinyKeyValueTable from "../Form/TinyKeyValueTable";
 
 function guid() {
   var S4 = function () {
