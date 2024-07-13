@@ -10,7 +10,6 @@ Nova.booting((app, store) => {
     app.component('index-Nova-KeyValueTinyMCE', IndexNovaTinyMCEField);
     app.component('detail-Nova-KeyValueTinyMCE', DetailNovaTinyMCEField);
     app.component('form-Nova-KeyValueTinyMCE', FormNovaTinyMCEField);
-    app.component('FormTinyKeyValueField', FormTinyKeyValueField);
     app.component('FormTinyKeyValueHeader', FormTinyKeyValueHeader);
     app.component('FormTinyKeyValueItem', FormTinyKeyValueItem);
     app.component('FormTinyKeyValueTable', FormTinyKeyValueTable);

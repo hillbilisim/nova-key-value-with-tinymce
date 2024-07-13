@@ -44,7 +44,7 @@
             type="button"
             class="cursor-pointer focus:outline-none focus:ring ring-primary-200 dark:ring-gray-600 focus:ring-offset-4 dark:focus:ring-offset-gray-800 rounded-lg mx-auto text-primary-500 font-bold link-default mt-3 px-3 rounded-b-lg flex items-center"
         >
-          <Icon type="plus-circle" />
+          <Icon type="plus-circle"/>
           <span class="ml-1">{{ currentField.actionText }}</span>
         </button>
       </div>
@@ -54,7 +54,7 @@
 
 <script>
 import map from 'lodash/map'
- import Editor from '@tinymce/tinymce-vue'
+import Editor from '@tinymce/tinymce-vue'
 import findIndex from 'lodash/findIndex'
 import fromPairs from 'lodash/fromPairs'
 import reject from 'lodash/reject'
@@ -82,7 +82,7 @@ function guid() {
 }
 
 export default {
-  components: {Editor,TinyKeyValueTable},
+  components: {Editor, TinyKeyValueTable},
 
 
   props: ['index', 'resource', 'resourceName', 'resourceId', 'field'],
@@ -154,7 +154,7 @@ export default {
     },
     addRow() {
       return tap(guid(), id => {
-        this.theData = [...this.theData, { id, key: '', value: '' }]
+        this.theData = [...this.theData, {id, key: '', value: ''}]
         return id
       })
     },
