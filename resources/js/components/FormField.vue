@@ -55,13 +55,48 @@
 <script>
 import map from 'lodash/map'
  import Editor from '@tinymce/tinymce-vue'
+import findIndex from 'lodash/findIndex'
+import fromPairs from 'lodash/fromPairs'
+import reject from 'lodash/reject'
+import tap from 'lodash/tap'
+import TinyKeyValueTable from "./TinyKeyValueTable.vue";
+
+function guid() {
+  var S4 = function () {
+    return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1)
+  }
+  return (
+      S4() +
+      S4() +
+      '-' +
+      S4() +
+      '-' +
+      S4() +
+      '-' +
+      S4() +
+      '-' +
+      S4() +
+      S4() +
+      S4()
+  )
+}
 
 export default {
-  components: {Editor},
+  components: {Editor,TinyKeyValueTable},
 
 
   props: ['index', 'resource', 'resourceName', 'resourceId', 'field'],
   computed: {
+    finalPayload() {
+      return fromPairs(
+          reject(
+              map(this.theData, row =>
+                  row && row.key ? [row.key, row.value] : undefined
+              ),
+              row => row === undefined
+          )
+      )
+    },
     options() {
       let options = this.field.options
 
@@ -91,9 +126,7 @@ export default {
     /**
      * Fill the given FormData object with the field's internal value.
      */
-    fill(formData) {
-      formData.append(this.field.attribute, this.value || '')
-    },
+
 
     /**
      * Update the field's internal value.
@@ -101,7 +134,60 @@ export default {
     handleChange(value) {
       this.value = value
     },
+    populateKeyValueData() {
+      this.theData = map(Object.entries(this.value || {}), ([key, value]) => ({
+        id: guid(),
+        key: `${key}`,
+        value,
+      }))
 
+      if (this.theData.length == 0) {
+        this.addRow()
+      }
+    },
+    fill(formData) {
+      this.fillIfVisible(
+          formData,
+          this.field.attribute,
+          JSON.stringify(this.finalPayload)
+      )
+    },
+    addRow() {
+      return tap(guid(), id => {
+        this.theData = [...this.theData, { id, key: '', value: '' }]
+        return id
+      })
+    },
+
+    /**
+     * Add a row to the table and select its first field.
+     */
+    addRowAndSelect() {
+      return this.selectRow(this.addRow())
+    },
+
+    /**
+     * Remove the row from the table.
+     */
+    removeRow(id) {
+      return tap(
+          findIndex(this.theData, row => row.id == id),
+          index => this.theData.splice(index, 1)
+      )
+    },
+
+    /**
+     * Select the first field in a row with the given ref ID.
+     */
+    selectRow(refId) {
+      return this.$nextTick(() => {
+        this.$refs[refId][0].handleKeyFieldFocus()
+      })
+    },
+
+    onSyncedField() {
+      this.populateKeyValueData()
+    },
     filePicker: function (callback, value, meta) {
       let x = window.innerWidth || document.documentElement.clientWidth || document.getElementsByTagName('body')[0].clientWidth;
       let y = window.innerHeight || document.documentElement.clientHeight || document.getElementsByTagName('body')[0].clientHeight;
@@ -121,7 +207,9 @@ export default {
     }
   },
   data: () => ({theData: []}),
-
+  mounted() {
+    this.populateKeyValueData()
+  },
   created() {
     this.theData = map(
         Object.entries(this.field.value || {}),
