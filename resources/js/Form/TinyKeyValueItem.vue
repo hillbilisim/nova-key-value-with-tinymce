@@ -1,6 +1,6 @@
 <template>
   <div v-if="isNotObject" class="flex items-center key-value-item">
-    <div
+    TinyKeyValueItem<div
         class="flex flex-grow border-b border-gray-200 dark:border-gray-700 key-value-fields"
     >value
       <div
