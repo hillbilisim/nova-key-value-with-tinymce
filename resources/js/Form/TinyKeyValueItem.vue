@@ -1,16 +1,11 @@
 <template>
   <div v-if="isNotObject" class="flex items-center key-value-item">
-    TinyKeyValueItem<div
-        class="flex flex-grow border-b border-gray-200 dark:border-gray-700 key-value-fields"
-    >value
-      <div
-          class="flex-none w-48 cursor-text"
-          :class="[
+    TinyKeyValueItem
+    <div class="flex flex-grow border-b border-gray-200 dark:border-gray-700 key-value-fields">value
+      <div class="flex-none w-48 cursor-text" :class="[
           readOnlyKeys || !isEditable
             ? 'bg-gray-50 dark:bg-gray-800'
-            : 'bg-white dark:bg-gray-900',
-        ]"
-      >
+            : 'bg-white dark:bg-gray-900',]">
         <textarea
             rows="1"
             :dusk="`key-value-key-${index}`"

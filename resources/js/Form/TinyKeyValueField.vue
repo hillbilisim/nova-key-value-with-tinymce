@@ -1,55 +1,32 @@
 <template>
-  <DefaultField
-    :field="currentField"
-    :errors="errors"
-    :full-width-content="['modal', 'action-modal'].includes(mode)"
-    :show-help-text="showHelpText"
-  >
-    <template #field>
+  <PanelItem :index="index" :field="field">
+    <template #value>
       <TinyKeyValueTable
-        :edit-mode="!currentlyIsReadonly"
-        :can-delete-row="currentField.canDeleteRow"
+          v-if="theData.length > 0"
+          :edit-mode="false"
+          class="overflow-hidden"
       >
         <TinyKeyValueHeader
-          :key-label="currentField.keyLabel"
-          :value-label="currentField.valueLabel"
+            :key-label="field.keyLabel"
+            :value-label="field.valueLabel"
         />
 
-        <div class="bg-white dark:bg-gray-800 overflow-hidden key-value-items">
+        <div
+            class="bg-gray-50 dark:bg-gray-700 overflow-hidden key-value-items"
+        >
           <TinyKeyValueItem
-            v-for="(item, index) in theData"
-            :index="index"
-            @remove-row="removeRow"
-            :item.sync="item"
-            :key="item.id"
-            :ref="item.id"
-            :read-only="currentlyIsReadonly"
-            :read-only-keys="currentField.readonlyKeys"
-            :can-delete-row="currentField.canDeleteRow"
+              v-for="(item, index) in theData"
+              :index="index"
+              :item="item"
+              :disabled="true"
+              :key="item.key"
           />
         </div>
       </TinyKeyValueTable>
-
-      <div
-        class="mr-11"
-        v-if="
-          !currentlyIsReadonly &&
-          !currentField.readonlyKeys &&
-          currentField.canAddRow
-        "
-      >
-        <button
-          @click="addRowAndSelect"
-          :dusk="`${field.attribute}-add-key-value`"
-          type="button"
-          class="cursor-pointer focus:outline-none focus:ring ring-primary-200 dark:ring-gray-600 focus:ring-offset-4 dark:focus:ring-offset-gray-800 rounded-lg mx-auto text-primary-500 font-bold link-default mt-3 px-3 rounded-b-lg flex items-center"
-        >
-          <Icon type="plus-circle" />
-          <span class="ml-1">{{ currentField.actionText }}</span>
-        </button>
-      </div>
     </template>
-  </DefaultField>
+  </PanelItem>
+
+
 </template>
 
 <script>
@@ -58,32 +35,32 @@ import fromPairs from 'lodash/fromPairs'
 import map from 'lodash/map'
 import reject from 'lodash/reject'
 import tap from 'lodash/tap'
- import TinyKeyValueTable from "./TinyKeyValueTable.vue";
+import TinyKeyValueTable from "./TinyKeyValueTable.vue";
 
 function guid() {
   var S4 = function () {
     return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1)
   }
   return (
-    S4() +
-    S4() +
-    '-' +
-    S4() +
-    '-' +
-    S4() +
-    '-' +
-    S4() +
-    '-' +
-    S4() +
-    S4() +
-    S4()
+      S4() +
+      S4() +
+      '-' +
+      S4() +
+      '-' +
+      S4() +
+      '-' +
+      S4() +
+      '-' +
+      S4() +
+      S4() +
+      S4()
   )
 }
 
 export default {
   components: {TinyKeyValueTable},
 
-  data: () => ({ theData: [] }),
+  data: () => ({theData: []}),
 
   mounted() {
     this.populateKeyValueData()
@@ -111,9 +88,9 @@ export default {
      */
     fill(formData) {
       this.fillIfVisible(
-        formData,
-        this.field.attribute,
-        JSON.stringify(this.finalPayload)
+          formData,
+          this.field.attribute,
+          JSON.stringify(this.finalPayload)
       )
     },
 
@@ -122,7 +99,7 @@ export default {
      */
     addRow() {
       return tap(guid(), id => {
-        this.theData = [...this.theData, { id, key: '', value: '' }]
+        this.theData = [...this.theData, {id, key: '', value: ''}]
         return id
       })
     },
@@ -139,8 +116,8 @@ export default {
      */
     removeRow(id) {
       return tap(
-        findIndex(this.theData, row => row.id == id),
-        index => this.theData.splice(index, 1)
+          findIndex(this.theData, row => row.id == id),
+          index => this.theData.splice(index, 1)
       )
     },
 
@@ -164,12 +141,12 @@ export default {
      */
     finalPayload() {
       return fromPairs(
-        reject(
-          map(this.theData, row =>
-            row && row.key ? [row.key, row.value] : undefined
-          ),
-          row => row === undefined
-        )
+          reject(
+              map(this.theData, row =>
+                  row && row.key ? [row.key, row.value] : undefined
+              ),
+              row => row === undefined
+          )
       )
     },
   },
