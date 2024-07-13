@@ -2,11 +2,11 @@
 
   <TinyKeyValueTable
       :edit-mode="!currentlyIsReadonly"
-      :can-delete-row="currentField.canDeleteRow"
+      :can-delete-row="theData.canDeleteRow"
   >
     <KeyValueHeader
-        :key-label="currentField.keyLabel"
-        :value-label="currentField.valueLabel"
+        :key-label="theData.keyLabel"
+        :value-label="theData.valueLabel"
     />
 
     <div class="bg-white dark:bg-gray-800 overflow-hidden key-value-items">
@@ -18,8 +18,8 @@
           :key="item.id"
           :ref="item.id"
           :read-only="currentlyIsReadonly"
-          :read-only-keys="currentField.readonlyKeys"
-          :can-delete-row="currentField.canDeleteRow"
+          :read-only-keys="theData.readonlyKeys"
+          :can-delete-row="theData.canDeleteRow"
       />
     </div>
   </TinyKeyValueTable>
@@ -29,7 +29,7 @@
       v-if="
           !currentlyIsReadonly &&
           !currentField.readonlyKeys &&
-          currentField.canAddRow
+          theData.canAddRow
         "
   >
     <button
@@ -39,7 +39,7 @@
         class="cursor-pointer focus:outline-none focus:ring ring-primary-200 dark:ring-gray-600 focus:ring-offset-4 dark:focus:ring-offset-gray-800 rounded-lg mx-auto text-primary-500 font-bold link-default mt-3 px-3 rounded-b-lg flex items-center"
     >
       <Icon type="plus-circle"/>
-      <span class="ml-1">{{ currentField.actionText }}</span>
+      <span class="ml-1">{{ theData.actionText }}</span>
     </button>
   </div>
 </template>
@@ -116,6 +116,7 @@ export default {
         if (this.theData.length == 0) {
           this.addRow()
         }
+        console.log(this.theData);
       },
 
       /**
