@@ -93164,7 +93164,7 @@ __webpack_require__(/*! ./theme.js */ "./node_modules/tinymce/themes/silver/them
 /******/ 			return __webpack_require__.O(result);
 /******/ 		}
 /******/ 		
-/******/ 		var chunkLoadingGlobal = self["webpackChunkhillbilisim_nova_key_value_with_tinymce"] = self["webpackChunkhillbilisim_nova_key_value_with_tinymce"] || [];
+/******/ 		var chunkLoadingGlobal = self["webpackChunkcustom_nova_key_value_with_tinymce"] = self["webpackChunkcustom_nova_key_value_with_tinymce"] || [];
 /******/ 		chunkLoadingGlobal.forEach(webpackJsonpCallback.bind(null, 0));
 /******/ 		chunkLoadingGlobal.push = webpackJsonpCallback.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
 /******/ 	})();

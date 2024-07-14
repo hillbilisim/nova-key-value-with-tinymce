@@ -1,5 +1,5 @@
 <template>
-    asd<span>{{ cleanValue }}</span>
+    q<span>{{ cleanValue }}</span>
 </template>
 
 <script>
