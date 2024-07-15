@@ -4,7 +4,7 @@ const path = require('path')
 
 class NovaExtension {
     name() {
-        return 'nova-key-value-with-tinymce'
+        return 'nova-extension'
     }
 
     register(name) {
