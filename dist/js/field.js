@@ -836,6 +836,44 @@ __webpack_require__.r(__webpack_exports__);
     handleKeyFieldFocus: function handleKeyFieldFocus() {
       this.$refs.keyField.select();
     },
+    /*
+      * Set the initial, internal value for the field.
+      */
+    setInitialValue: function setInitialValue() {
+      this.value = this.field.value || '';
+    },
+    /**
+     * Fill the given FormData object with the field's internal value.
+     */
+    fill: function fill(formData) {
+      formData.append(this.field.attribute, this.value || '');
+    },
+    /**
+     * Update the field's internal value.
+     */
+    handleChange: function handleChange(value) {
+      this.value = value;
+    },
+    filePicker: function filePicker(callback, value, meta) {
+      var x = window.innerWidth || document.documentElement.clientWidth || document.getElementsByTagName('body')[0].clientWidth;
+      var y = window.innerHeight || document.documentElement.clientHeight || document.getElementsByTagName('body')[0].clientHeight;
+      var type = 'image' === meta.filetype ? 'Images' : 'Files';
+      var url = this.options.path_absolute + this.options.lfm_url + '?editor=tinymce5&type=' + type;
+      tinymce.activeEditor.windowManager.openUrl({
+        url: url,
+        title: 'File manager',
+        width: x * 0.8,
+        height: y * 0.8,
+        onMessage: function onMessage(api, message) {
+          callback(message.content);
+        }
+      });
+    },
+    handleValueFieldFocus: function handleValueFieldFocus() {
+      this.$refs.valueField.select();
+    }
+  },
+  computed: {
     options: function options() {
       var options = this.field.options;
       if (options.use_lfm) {
@@ -849,11 +887,6 @@ __webpack_require__.r(__webpack_exports__);
       }
       return options;
     },
-    handleValueFieldFocus: function handleValueFieldFocus() {
-      this.$refs.valueField.select();
-    }
-  },
-  computed: {
     isNotObject: function isNotObject() {
       return !(this.item.value instanceof Object);
     },
